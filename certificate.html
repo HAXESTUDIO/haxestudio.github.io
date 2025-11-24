@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HAXE STUDIO Certificate</title>
+  <meta charset="UTF-8" />
+  <!-- Main + Signature Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Playfair Display", "Times New Roman", serif;
+      background: #050816;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .certificate {
+      position: relative;
+      width: 900px;
+      height: 620px;
+      padding: 38px 50px;
+      background: radial-gradient(circle at top, #020617, #000);
+      border-radius: 12px;
+      border: 4px solid gold;
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+      overflow: hidden;
+      color: #e5e7eb;
+    }
+
+    /* Gold inner border */
+    .certificate::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 2px solid rgba(255,215,0,0.5);
+      border-radius: 6px;
+      pointer-events: none;
+    }
+
+    /* Ghost logo watermark */
+    .watermark {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+
+    .watermark img {
+      width: 340px;
+      height: 340px;
+      object-fit: cover;
+      border-radius: 50%;
+      filter: blur(0.2px);
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .header {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: gold;
+      margin-bottom: 4px;
+    }
+
+    .subheader {
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #cbd5f5;
+      margin-bottom: 22px;
+    }
+
+    .line {
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, gold, transparent);
+      margin: 0 auto 22px auto;
+      border-radius: 999px;
+    }
+
+    .presented {
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 8px;
+    }
+
+    .student-name {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #38bdf8;
+      margin-bottom: 10px;
+    }
+
+    .text-small {
+      font-size: 0.98rem;
+      color: #d1d5db;
+      margin-bottom: 8px;
+    }
+
+    .cert-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #f9fafb;
+      margin-bottom: 18px;
+    }
+
+    .details {
+      font-size: 0.95rem;
+      color: #cbd5f5;
+      line-height: 1.6;
+      max-width: 640px;
+      margin: 0 auto 28px auto;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 26px;
+      font-size: 0.86rem;
+      color: #d1d5db;
+    }
+
+    .meta-block {
+      text-align: left;
+    }
+
+    .meta-label {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 3px;
+    }
+
+    .meta-value {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .verify-link {
+      font-size: 0.82rem;
+      color: #9ca3af;
+      margin-top: 4px;
+    }
+
+    .verify-link span {
+      color: #60a5fa;
+    }
+
+    /* Signature block */
+    .signature-block {
+      text-align: center;
+    }
+
+    .signature-line {
+      width: 220px;
+      height: 1px;
+      background: gold;
+      margin: 0 auto 3px auto;
+    }
+
+    .signature-name {
+      font-family: "Great Vibes", cursive;
+      font-size: 1.9rem;
+      color: gold;
+      margin-bottom: 2px;
+    }
+
+    .signature-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #d1d5db;
+    }
+
+    /* Gold seal */
+    .seal {
+      position: absolute;
+      right: 48px;
+      top: 58px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid rgba(255,215,0,0.9);
+      box-shadow: 0 0 22px rgba(255,215,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: gold;
+      background: radial-gradient(circle at 30% 0%, #facc15, #92400e);
+    }
+
+    .seal span {
+      text-align: center;
+    }
+
+    /* Small legal text */
+    .legal {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.72rem;
+      color: #6b7280;
+      text-align: center;
+      max-width: 640px;
+    }
+  </style>
+</head>
+<body>
+  <div class="certificate">
+    <!-- Ghost watermark -->
+    <div class="watermark">
+      <!-- Use your logo file here -->
+      <img src="haxestudio.webp" alt="HAXE STUDIO Logo Watermark">
+    </div>
+
+    <!-- Gold seal -->
+    <div class="seal">
+      <span>HAXE<br/>STUDIO<br/>VERIFIED</span>
+    </div>
+
+    <div class="content">
+      <div class="header">HAXE STUDIO</div>
+      <div class="subheader">CYBERSECURITY &amp; ETHICAL HACKING TRAINING</div>
+      <div class="line"></div>
+
+      <div class="presented">THIS CERTIFICATE IS PROUDLY PRESENTED TO</div>
+      <div class="student-name">[STUDENT NAME]</div>
+
+      <div class="text-small">for successfully completing the</div>
+      <div class="cert-title">Cybersecurity &amp; Ethical Hacking Certificate</div>
+
+      <div class="details">
+        including hands-on labs in ethical hacking, Kali Linux operations, reconnaissance,
+        vulnerability assessment, OSINT analysis and practical cybersecurity methodology under
+        the guidance of <strong>HAXE STUDIO</strong>.
+      </div>
+
+      <div class="meta-row">
+        <div class="meta-block">
+          <div class="meta-label">Certificate ID</div>
+          <div class="meta-value">HAXE-CERT-000124</div>
+
+          <div class="meta-label" style="margin-top:8px;">Issued on</div>
+          <div class="meta-value">January 22, 2025</div>
+
+          <div class="verify-link">
+            Verify at: <span>https://haxestudio.github.io/verify</span>
+          </div>
+        </div>
+
+        <div class="signature-block">
+          <div class="signature-line"></div>
+          <div class="signature-name">Rehaman Mohd</div>
+          <div class="signature-title">Instructor · HAXE STUDIO</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="legal">
+      Unauthorized duplication or modification of this certificate is strictly prohibited.
+      All certificates are individually issued and verified by HAXE STUDIO.
+    </div>
+  </div>
+</body>
+</html>
