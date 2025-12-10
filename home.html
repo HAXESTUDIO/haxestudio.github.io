@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HAXE STUDIO | Ethical Hacking & Cybersecurity Training</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="HAXE STUDIO offers professional ethical hacking and cybersecurity training with practical, industry-focused content and mentorship." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="haxestudio.webp" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-main: #050816;
+      --bg-card: #0b1020;
+      --bg-card-alt: #060a12;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.15);
+      --accent-strong: #1d4ed8;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --danger: #ef4444;
+      --success: #22c55e;
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.7);
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --radius-pill: 999px;
+      --nav-height: 70px;
+      .yt-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid #ff0000;
+  color: #ff0000;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: 0.18s ease;
+  cursor: pointer;
+}
+
+.yt-btn:hover {
+  background-color: #ff0000;
+  color: #fff;
+  box-shadow: 0 0 18px rgba(255,0,0,0.6);
+  transform: translateY(-2px);
+}
+
+.yt-icon {
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+      color: var(--text-main);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .page-wrap {
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.4rem;
+    }
+
+    /* Top ribbon */
+    .top-ribbon {
+      text-align: center;
+      background: linear-gradient(90deg, rgba(37, 99, 235, 0.15), rgba(37, 99, 235, 0.05));
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      padding: 0.4rem 0.8rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    }
+
+    .top-ribbon span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+.yt-block {
+  text-align: center;
+  margin-top: 1.8rem;
+}
+
+.yt-logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+  animation: logoPulse 2.8s ease-in-out infinite;
+  filter: drop-shadow(0px 0px 30px rgba(59,130,246,0.9));
+}
+
+@keyframes logoPulse {
+  0% { transform: scale(1); filter: drop-shadow(0px 0px 14px rgba(59,130,246,0.8)); }
+  50% { transform: scale(1.08); filter: drop-shadow(0px 0px 40px rgba(59,130,246,1)); }
+  100% { transform: scale(1); filter: drop-shadow(0px 0px 14px rgba(59,130,246,0.8)); }
+}
+
+.yt-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid #ff0000;
+  color: #ff0000;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: 0.18s ease;
+  cursor: pointer;
+}
+
+.yt-btn:hover {
+  background-color: #ff0000;
+  color: #fff;
+  box-shadow: 0 0 18px rgba(255,0,0,0.6);
+  transform: translateY(-2px);
+}
+
+.yt-icon {
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: radial-gradient(circle at top, rgba(37,99,235,0.12), rgba(15,23,42,0.9));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      height: var(--nav-height);
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .logo-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 18px;
+      background: radial-gradient(circle at 20% 0, #60a5fa, #1d4ed8 40%, #020617 85%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #e5e7eb;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.6);
+    }
+
+    /* REAL LOGO STYLES */
+    .logo-img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.5);
+    }
+
+    .hero-logo {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 14px;
+      box-shadow: 0 6px 18px rgba(37,99,235,0.4);
+    }
+
+    .footer-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 14px rgba(37,99,235,0.4);
+    }
+
+    .brand-text-main {
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .nav-link {
+      position: relative;
+      cursor: pointer;
+      transition: color 0.18s ease, transform 0.18s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.36rem;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #60a5fa, #2563eb);
+      transition: width 0.18s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 0.42rem 1.1rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(37, 99, 235, 0.5);
+      background: radial-gradient(circle at top left, rgba(37,99,235,0.3), rgba(15,23,42,0.9));
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #e5e7eb;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.9);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(15,23,42,0.9);
+      background: radial-gradient(circle at top left, rgba(59,130,246,0.4), rgba(15,23,42,1));
+    }
+
+    .nav-cta span.icon {
+      font-size: 0.9rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 3rem 0 3.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.8rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(37,99,235,0.5);
+      background: rgba(15,23,42,0.9);
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-kicker-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--success);
+      box-shadow: 0 0 12px rgba(34,197,94,0.7);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3.1vw, 2.6rem);
+      line-height: 1.12;
+      margin-bottom: 0.9rem;
+      font-weight: 700;
+    }
+
+    .hero-title span.accent {
+      background: linear-gradient(120deg, #60a5fa, #2563eb, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 32rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .badge {
+      font-size: 0.72rem;
+      padding: 0.32rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(107,114,128,0.5);
+      background: radial-gradient(circle at 0 0, #111827, #020617);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .badge.primary {
+      border-color: rgba(37,99,235,0.7);
+      background: radial-gradient(circle at 0 0, rgba(37,99,235,0.7), #020617);
+      color: #e5e7eb;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .btn-main {
+      padding: 0.85rem 1.6rem;
+      border-radius: var(--radius-pill);
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #f9fafb;
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 16px 35px rgba(37,99,235,0.7);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 50px rgba(37,99,235,0.9);
+    }
+
+    .btn-ghost {
+      padding: 0.85rem 1.4rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.8);
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: background 0.18s ease, transform 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15,23,42,1);
+      border-color: rgba(209,213,219,0.8);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    .hero-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .hero-note span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Hero card (right) */
+    .hero-card {
+      background: radial-gradient(circle at top, rgba(37,99,235,0.25), #020617);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(37,99,235,0.5);
+      box-shadow: var(--shadow-soft);
+      padding: 1.5rem 1.4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 10% 0, rgba(59,130,246,0.3), transparent 55%),
+        radial-gradient(circle at 90% 100%, rgba(14,165,233,0.28), transparent 55%);
+      opacity: 0.7;
+      z-index: -1;
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card-title {
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #e5e7eb;
+    }
+
+    .hero-card-pill {
+      font-size: 0.7rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.5);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-card-price {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-card-price span {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .hero-card-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-card-divider {
+      height: 1px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(90deg, transparent, rgba(148,163,184,0.5), transparent);
+      margin: 0.9rem 0 1rem;
+    }
+
+    .hero-card-list {
+      list-style: none;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: grid;
+      gap: 0.45rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-card-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .hero-card-bullet {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(34,197,94,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--success);
+      margin-top: 0.15rem;
+    }
+
+    .hero-card-footnote {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.6rem;
+    }
+
+    .hero-card-footnote span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+    /* Sections */
+    section {
+      padding: 2.5rem 0;
+    }
+
+    .section-header {
+      margin-bottom: 1.4rem;
+    }
+
+    .eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      max-width: 30rem;
+    }
+
+    /* Course breakdown */
+    .course-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 1.35rem 1.25rem;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+    }
+
+    .card-header-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .card-tag {
+      font-size: 0.72rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      color: var(--text-muted);
+    }
+
+    .course-modules {
+      list-style: none;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      display: grid;
+      gap: 0.45rem;
+      margin-top: 0.7rem;
+    }
+
+    .course-modules li span {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(37,99,235,0.18), rgba(15,23,42,0.9));
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(37,99,235,0.6);
+      padding: 1rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-top: 0.9rem;
+    }
+
+    .highlight-box span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* How it works */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .step {
+      background: var(--bg-card-alt);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 1rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .step-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: #e5e7eb;
+    }
+
+    /* FAQ */
+    .faq {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 0.85rem;
+      font-size: 0.86rem;
+    }
+
+    .faq-item {
+      background: var(--bg-card-alt);
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      padding: 0.8rem 0.9rem;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-a {
+      color: var(--text-muted);
+    }
+
+    .legal-box {
+      background: rgba(15,23,42,0.9);
+      border-radius: 16px;
+      border: 1px solid rgba(148,163,184,0.55);
+      padding: 0.9rem 1rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .legal-box strong {
+      color: #e5e7eb;
+    }
+
+    .legal-box span.danger {
+      color: var(--danger);
+      font-weight: 600;
+    }
+
+    /* Contact / footer */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: 1.4rem;
+      align-items: flex-start;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .contact-list strong {
+      color: #e5e7eb;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.32rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+      background: rgba(15,23,42,0.85);
+      transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+    }
+
+    .contact-link:hover {
+      border-color: rgba(148,163,184,0.9);
+      background: rgba(15,23,42,1);
+      transform: translateY(-1px);
+    }
+
+    footer {
+      border-top: 1px solid rgba(31,41,55,0.9);
+      padding: 1.2rem 0 1.6rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    footer .footer-inner {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .course-grid,
+      .faq,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 2.4rem;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn-main,
+      .btn-ghost {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 1.85rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.9rem;
+      }
+
+      section {
+        padding: 2rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="top-ribbon">
+      <span>New:</span> Professional Ethical Hacking & Cybersecurity Foundations course now open for enrollment.
+    </div>
+
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="container nav-inner">
+        <div class="nav-left">
+          <!-- OLD:
+          <div class="logo-circle">HX</div>
+          -->
+          <img src="haxestudio.webp" class="logo-img" alt="HAXE STUDIO Logo">
+          <div>
+            <div class="brand-text-main">HAXE STUDIO</div>
+            <div class="brand-text-sub">Cybersecurity Training &amp; Mentorship</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <div class="nav-link" data-scroll="#course">Course</div>
+          <div class="nav-link" data-scroll="#how-it-works">How it works</div>
+          <div class="nav-link" data-scroll="#faq">FAQ</div>
+          <div class="nav-link" data-scroll="#contact">Contact</div>
+        </nav>
+        <button class="nav-cta" data-scroll="#enroll">
+          <span class="icon">⚡</span>
+          <span>Enroll &amp; Start</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <!-- Left -->
+          <div>
+            <!-- HERO LOGO -->
+            <img src="haxestudio.webp" class="hero-logo" alt="HAXE STUDIO Logo">
+            <div class="hero-kicker">
+              <span class="hero-kicker-dot"></span>
+              Professional Ethical Hacking Foundations · ₹1999
+            </div>
+            <h1 class="hero-title">
+              Start your <span class="accent">Cybersecurity Career</span> with structured, professional training.
+            </h1>
+            <p class="hero-subtitle">
+              HAXE STUDIO trains you in ethical hacking and cybersecurity with a practical, industry-focused approach. 
+              No fluff — just real skills, labs, and mentorship designed to help you think like a professional security engineer.
+            </p>
+
+            <div class="hero-badges">
+              <div class="badge primary">
+                <span class="badge-dot"></span>
+                Ethical Hacking &amp; Cybersecurity Foundations · ₹1999
+              </div>
+              <div class="badge">
+                100% Ethical · For education &amp; careers only
+              </div>
+              <div class="badge">
+                Certification from HAXE STUDIO
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <button class="btn-main" id="heroEnrollBtn">
+                Enroll Now — ₹1999
+                <span>↗</span>
+              </button>
+              <button class="btn-ghost" data-scroll="#course">
+                View full curriculum
+              </button>
+            </div>
+            <p class="hero-note">
+              Secure payment via <span>UPI</span> · Personal support on Telegram &amp; WhatsApp.
+            </p>
+          </div>
+<div class="yt-block">
+  <img src="haxestudio.webp" class="yt-logo">
+  <a href="https://youtube.com/@haxestudio" target="_blank" class="yt-btn">
+    <span class="yt-icon">▶</span> Visit our YouTube Channel
+  </a>
+</div>
+<section id="success" style="padding:2.8rem 0; background:#0b1020;">
+  <h2 class="section-title" style="text-align:center;">Student Achievements</h2>
+
+  <div style="
+    margin-top:1.4rem; 
+    color:#cbd5f5; 
+    font-size:1rem;
+    white-space: nowrap;
+    overflow:hidden;
+  ">
+    <div style="
+      display:inline-block;
+      animation: scroll-left 12s linear infinite;
+    ">
+      🔥 Sai Krishna – Completed Pentesting Pack &nbsp;&nbsp;&nbsp;
+      🔥 Abhinav – Elite Program Graduate &nbsp;&nbsp;&nbsp;
+      🔥 Nithesh – Bug bounty beginner &nbsp;&nbsp;&nbsp;
+      🔥 Tarun – OSINT & recon learner &nbsp;&nbsp;&nbsp;
+    </div>
+  </div>
+
+</section>
+
+<style>
+@keyframes scroll-left {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+</style>
+<section id="mission" style="padding:3rem 0; text-align:center;">
+  <h2 class="section-title">Our Mission</h2>
+  <p style="color:#9ca3af; max-width:640px; margin:1rem auto; font-size:1.05rem;">
+    At HAXE STUDIO, our mission is to train the next generation of cybersecurity professionals through
+    hands-on, real-world ethical hacking education — empowering students to think like attackers and defend like experts.
+  </p>
+</section>
+
+          <!-- Right card -->
+          <aside class="hero-card" id="enroll">
+            <div class="hero-card-header">
+              <div>
+                <div class="hero-card-title">Ethical Hacking &amp; Cybersecurity Foundations</div>
+              </div>
+              <div class="hero-card-pill">
+                Limited Cohort • Live Support
+              </div>
+            </div>
+            <div class="hero-card-price">
+              ₹1999 <span>one-time</span>
+            </div>
+            <div class="hero-card-meta">
+              Beginner-friendly • Structured roadmap • Practical demonstrations
+            </div>
+            <hr class="hero-card-divider" />
+            <ul class="hero-card-list">
+              <li>
+                <div class="hero-card-bullet">✓</div>
+                <div>Ethical hacking fundamentals, mindset &amp; methodology</div>
+              </li>
+              <li>
+                <div class="hero-card-bullet">✓</div>
+                <div>Kali Linux introduction and essential terminal commands</div>
+              </li>
+              <li>
+                <div class="hero-card-bullet">✓</div>
+                <div>Reconnaissance, scanning and vulnerability discovery workflow</div>
+              </li>
+              <li>
+                <div class="hero-card-bullet">✓</div>
+                <div>Legality, ethics and responsible use of hacking skills</div>
+              </li>
+              <li>
+                <div class="hero-card-bullet">✓</div>
+                <div>Completion certificate from <strong>HAXE STUDIO</strong></div>
+              </li>
+            </ul>
+
+            <!-- UPI payment button -->
+            <a
+              href="upi://pay?pa=9059970025-6@ybl&pn=HAXE_STUDIO&am=1999&cu=INR&tn=Ethical+Hacking+Professional+Course"
+              class="btn-main"
+              style="margin-top: 0.4rem; width: 100%; justify-content: center; text-align: center;"
+            >
+              Pay ₹1999 via UPI
+            </a>
+
+            <p class="hero-card-footnote">
+              After payment, send a screenshot and your email/Telegram ID on WhatsApp 
+              to <span>+91 9059970025</span>. You will be added to the course and support group.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Course section -->
+      <section id="course">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">Course overview</div>
+            <h2 class="section-title">Ethical Hacking &amp; Cybersecurity Foundations</h2>
+            <p class="section-subtitle">
+              This program is designed for serious learners who want to build a professional foundation in cybersecurity —
+              not just “hack Wi-Fi”, but understand concepts the right way.
+            </p>
+          </div>
+
+          <!-- PROGRAM PACKS -->
+          <section id="packs">
+            <div class="container">
+              <div class="section-header">
+                <div class="eyebrow">Premium learning tracks</div>
+                <h2 class="section-title">Professional Cybersecurity Programs</h2>
+                <p class="section-subtitle">
+                  Choose a structured pathway based on your career goals — from beginner to red team professional.
+                </p>
+              </div>
+
+              <div class="course-grid">
+                <!-- Beginner Pack -->
+                <div class="card">
+                  <div class="card-header-line">
+                    <div class="card-title">🧩 HAXE BEGINNER PACK</div>
+                    <span class="card-tag" style="border-color:#22c55e; color:#22c55e;">Entry Level</span>
+                  </div>
+                  <div class="hero-card-price" style="margin-bottom:0.5rem;">₹1999</div>
+                  <ul class="course-modules">
+                    <li>✔ Ethical hacking basics</li>
+                    <li>✔ Linux & networking fundamentals</li>
+                    <li>✔ OSINT basics & research</li>
+                  </ul>
+                  <a
+                    href="upi://pay?pa=rehamanmohd13@axl&pn=HAXE_STUDIO&am=1999&cu=INR&tn=HAXE+BEGINNER+PACK"
+                    class="btn-main"
+                    style="margin-top: 0.8rem; width:100%; justify-content:center;"
+                  >
+                    Enroll — ₹1999
+                  </a>
+                </div>
+
+                <!-- Pentesting Pack -->
+                <div class="card">
+                  <div class="card-header-line">
+                    <div class="card-title">🔥 HAXE PENETRATION TESTING PACK</div>
+                    <span class="card-tag" style="border-color:#2563eb; color:#2563eb;">Most Popular</span>
+                  </div>
+                  <div class="hero-card-price" style="margin-bottom:0.5rem;">₹4999</div>
+                  <ul class="course-modules">
+                    <li>✔ Kali Linux — complete training</li>
+                    <li>✔ Metasploit — practical exploitation</li>
+                    <li>✔ Wireshark — network analysis</li>
+                    <li>✔ Vulnerability scanning & mapping</li>
+                    <li>✔ Payload building & tests</li>
+                  </ul>
+                  <a
+                    href="upi://pay?pa=rehamanmohd13@axl&pn=HAXE_STUDIO&am=4999&cu=INR&tn=HAXE+PENETRATION+PACK"
+                    class="btn-main"
+                    style="margin-top: 0.8rem; width:100%; justify-content:center;"
+                  >
+                    Enroll — ₹4999
+                  </a>
+                </div>
+
+                <!-- Red Team Pack -->
+                <div class="card">
+                  <div class="card-header-line">
+                    <div class="card-title">👨‍💻 HAXE RED TEAM MASTER PACK</div>
+                    <span class="card-tag" style="border-color:#9333ea; color:#a855f7;">Advanced Level</span>
+                  </div>
+                  <div class="hero-card-price" style="margin-bottom:0.5rem;">₹9999</div>
+                  <ul class="course-modules">
+                    <li>✔ Complete hacking suite</li>
+                    <li>✔ Bug bounty & exploit research</li>
+                    <li>✔ Web & API exploitation</li>
+                    <li>✔ Mobile hacking & analysis</li>
+                    <li>✔ OSINT intelligence & targeting</li>
+                    <li>✔ Privacy & anti-tracking</li>
+                    <li>✔ Red-team simulation labs</li>
+                  </ul>
+                  <a
+                    href="upi://pay?pa=rehamanmohd13@axl&pn=HAXE_STUDIO&am=9999&cu=INR&tn=HAXE+RED+TEAM+MASTER"
+                    class="btn-main"
+                    style="margin-top: 0.8rem; width:100%; justify-content:center;"
+                  >
+                    Enroll — ₹9999
+                  </a>
+                </div>
+
+                <!-- Elite Master Program -->
+                <div class="card" style="border:2px solid gold;">
+                  <div class="card-header-line">
+                    <div class="card-title">🏆 HAXE ELITE CYBERSECURITY MASTER PROGRAM</div>
+                    <span class="card-tag" style="border-color:gold; color:gold;">Ultra Elite</span>
+                  </div>
+                  <div class="hero-card-price" style="margin-bottom:0.5rem; color:gold;">₹19,999</div>
+                  <ul class="course-modules">
+                    <li>✔ Everything in previous packs</li>
+                    <li>✔ Direct private mentorship with you</li>
+                    <li>✔ 1-on-1 Q&A sessions</li>
+                    <li>✔ Internship-style hack labs</li>
+                    <li>✔ Personalized certification</li>
+                    <li>✔ Final hacking assessment</li>
+                    <li>✔ Official certificate & signature</li>
+                    <li>✔ Recommendation letter</li>
+                    <li>✔ Career & placement guidance</li>
+                    <li>✔ Direct WhatsApp mentorship</li>
+                  </ul>
+                  <a
+                    href="upi://pay?pa=rehamanmohd13@axl&pn=HAXE_STUDIO&am=19999&cu=INR&tn=HAXE+ELITE+PROGRAM"
+                    class="btn-main"
+                    style="margin-top: 0.8rem; width:100%; justify-content:center;"
+                  >
+                    Enroll — ₹19,999
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="course-grid">
+            <!-- Left: modules -->
+            <div class="card">
+              <div class="card-header-line">
+                <div class="card-title">What you will learn</div>
+                <span class="card-tag">Professional track</span>
+              </div>
+              <ul class="course-modules">
+                <li><span>1. Cybersecurity &amp; Ethical Hacking Basics</span> — core concepts, real-world use cases, types of hackers and attacks.</li>
+                <li><span>2. Legal &amp; Ethical Boundaries</span> — what is allowed, what is illegal, responsible disclosure &amp; safe practice.</li>
+                <li><span>3. Networking Fundamentals</span> — IP, ports, protocols, TCP/UDP, how data travels, and why it matters for hacking.</li>
+                <li><span>4. Kali Linux Essentials</span> — installation overview, interface, important tools, terminal navigation.</li>
+                <li><span>5. Linux Command Line</span> — must-know commands, file operations, permissions, system basics for hackers.</li>
+                <li><span>6. Reconnaissance &amp; Information Gathering</span> — passive &amp; active recon, footprinting, OSINT mindset.</li>
+                <li><span>7. Scanning &amp; Enumeration</span> — identifying open ports, services, versions and potential vulnerabilities.</li>
+                <li><span>8. Vulnerability Mindset</span> — how hackers think about weak points in systems, apps and networks.</li>
+                <li><span>9. Safe Lab Setup</span> — how to practice legally and safely using your own lab environment.</li>
+                <li><span>10. Roadmap &amp; Next Steps</span> — how to move into bug bounty, advanced pentesting and cyber careers.</li>
+              </ul>
+
+              <div class="highlight-box">
+                <strong>Who is this for?</strong><br />
+                <span>B.Tech / BCA / IT students, beginners, and working professionals</span> who want a serious,
+                structured start in cybersecurity — with guidance, not random YouTube videos.
+              </div>
+            </div>
+
+            <!-- Right: instructor & certificate -->
+            <div class="card">
+              <div class="card-header-line">
+                <div class="card-title">Your mentor · HAXE STUDIO</div>
+              </div>
+              <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:0.7rem;">
+                <strong style="color:#e5e7eb;">Rehaman Mohd</strong> is a cybersecurity practitioner with hands-on
+                experience in ethical hacking, penetration testing, Kali Linux and network security. 
+                Through HAXE STUDIO, he focuses on teaching real-world techniques in a structured, easy-to-follow way.
+              </p>
+              <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:0.7rem;">
+                His training style is practical and mentor-driven — you learn concepts, see how they are used in real
+                scenarios, and get guidance on how to grow from beginner to professional level.
+              </p>
+
+              <div class="highlight-box" style="margin-top:0.6rem;">
+                <strong>Certificate of Completion</strong><br />
+                After successfully completing the course and assessment, you will receive an official
+                <span>HAXE STUDIO Ethical Hacking Foundations Certificate</span> signed by
+                <strong>Instructor – Rehaman Mohd</strong>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+<div style="text-align:center; margin-top: 14px;">
+  <a href="certificate.html" target="_blank" style="
+     padding: 8px 16px;
+     border-radius: 999px;
+     border: 1px solid gold;
+     color: gold;
+     font-size: 0.85rem;
+     text-decoration: none;">
+     🏆 View Sample Certificate
+  </a>
+</div>
+<section id="instructor">
+  <div class="container" style="text-align:center; padding: 3rem 0;">
+    
+    <h2 class="section-title">Meet Your Mentor</h2>
+    <p class="section-subtitle">
+      The person guiding your cybersecurity journey
+    </p>
+
+    <img src="haxestudio.webp" alt="HAXE STUDIO logo" style="
+      width: 120px;
+      height:120px;
+      margin-top:20px;
+      margin-bottom:10px;
+      animation: pulseGlow 2s infinite;
+    ">
+
+    <h3 style="font-size:1.4rem; margin-top:10px;">Rehaman Mohd</h3>
+    <p style="color:#9ca3af; font-size:0.92rem;">
+      Founder & Lead Mentor — HAXE STUDIO
+    </p>
+
+    <p style="margin-top:10px; color:#cbd5f5; font-size:0.9rem; max-width:520px; margin-left:auto; margin-right:auto;">
+      A passionate cybersecurity practitioner and educator focused on teaching ethical hacking and real-world cybersecurity skills through structured training and hands-on labs.
+    </p>
+  </div>
+</section>
+
+<style>
+@keyframes pulseGlow {
+  0% { filter: drop-shadow(0 0 4px #1d4ed8); }
+  50% { filter: drop-shadow(0 0 14px #60a5fa); }
+  100% { filter: drop-shadow(0 0 4px #1d4ed8); }
+}
+</style>
+<section id="stats" style="padding: 3rem 0; text-align:center;">
+  <h2 class="section-title">Our Impact</h2>
+  <div class="section-subtitle">Growing cybersecurity community</div>
+
+  <div style="display:flex; justify-content:center; gap:3rem; margin-top:2rem; flex-wrap:wrap;">
+
+    <div>
+      <div class="stat-num" data-target="12" style="font-size:2.2rem; font-weight:bold; color:#60a5fa;">0</div>
+      <div>Students trained</div>
+    </div>
+
+    <div>
+      <div class="stat-num" data-target="48" style="font-size:2.2rem; font-weight:bold; color:#60a5fa;">0</div>
+      <div>Hands-on labs</div>
+    </div>
+
+    <div>
+      <div class="stat-num" data-target="6" style="font-size:2.2rem; font-weight:bold; color:#60a5fa;">0</div>
+      <div>Certificates issued</div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+const counters = document.querySelectorAll('.stat-num');
+counters.forEach(counter => {
+  const animate = () => {
+    const value = +counter.getAttribute('data-target');
+    const data = +counter.innerText;
+
+    const speed = value / 60;
+
+    if (data < value) {
+      counter.innerText = Math.ceil(data + speed);
+      setTimeout(animate, 40);
+    } else {
+      counter.innerText = value;
+    }
+  }
+  animate();
+});
+</script>
+
+      <!-- How it works -->
+      <section id="how-it-works">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">How enrollment works</div>
+            <h2 class="section-title">Simple &amp; transparent enrollment process</h2>
+            <p class="section-subtitle">
+              No account creation, no complicated gateways — just UPI payment and direct access to your learning space.
+            </p>
+          </div>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-title">Pay securely via UPI (₹1999)</div>
+              <p>
+                Click the <strong>“Pay ₹1999 via UPI”</strong> button. Your UPI app (GPay / PhonePe / Paytm / etc.)
+                will open with the amount and receiver details pre-filled.<br /><br />
+                UPI ID used: <strong>rehamanmohd13@axl</strong>
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-title">Send payment proof</div>
+              <p>
+                After payment, take a screenshot and send it via WhatsApp to 
+                <strong>+91 9059970025</strong> along with your name, email, and Telegram ID (if available).
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-title">Get access &amp; join the group</div>
+              <p>
+                You will receive access details for the course content and be added to the official
+                <strong>HAXE STUDIO</strong> Telegram / support group for ongoing guidance and updates.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-title">Learn, implement &amp; ask doubts</div>
+              <p>
+                Go through the modules, follow along with the labs, and ask your doubts in the support channels whenever
+                you get stuck. The goal is not just to “watch videos”, but to actually build skills.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ & Legal -->
+      <section id="faq">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">FAQ &amp; legal</div>
+            <h2 class="section-title">Frequently asked questions</h2>
+          </div>
+
+          <div class="faq">
+            <div class="faq-list">
+              <div class="faq-item">
+                <div class="faq-q">Is this course suitable for complete beginners?</div>
+                <div class="faq-a">
+                  Yes. You do not need previous hacking experience. Basic computer knowledge is enough; the course
+                  starts from fundamentals and then moves into practical cybersecurity concepts.
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">Will I get a certificate?</div>
+                <div class="faq-a">
+                  Yes. After completing the course and passing the assessment, you will receive an official
+                  <strong>HAXE STUDIO Ethical Hacking Foundations Certificate</strong> signed by Instructor – Rehaman Mohd.
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">Is everything taught legal?</div>
+                <div class="faq-a">
+                  Absolutely. The training is focused on <strong>ethical hacking</strong> and legal cybersecurity practice.
+                  You are expected to use the knowledge only on systems you own or are authorized to test.
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">Do you offer personal doubt support?</div>
+                <div class="faq-a">
+                  Yes. You can reach out through Telegram and WhatsApp, and use the official support group to ask your
+                  questions and get clarity.
+                </div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">Is the fee refundable?</div>
+                <div class="faq-a">
+                  Since this is a digital education product with access shared after payment, 
+                  <strong>fees are generally non-refundable</strong>. However, if there is a genuine issue,
+                  you can contact support and it will be reviewed on a case-by-case basis.
+                </div>
+              </div>
+            </div>
+
+            <div class="legal-box">
+              <strong>Legal &amp; ethics notice</strong><br /><br />
+              All content provided by HAXE STUDIO is strictly for educational and ethical purposes. You are required to
+              follow the law of your country and only test on systems where you have explicit permission.<br /><br />
+              Misuse of techniques for unauthorized access, damage or disruption of systems is strictly prohibited and may be 
+              punishable under cybercrime laws. <span class="danger">You are fully responsible for how you use this knowledge.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">Contact &amp; support</div>
+            <h2 class="section-title">Official communication channels</h2>
+            <p class="section-subtitle">
+              For any doubts before or after enrollment, you can reach out using the channels below.
+            </p>
+          </div>
+
+          <div class="contact-grid">
+            <div class="card">
+              <ul class="contact-list">
+                <li>
+                  <strong>WhatsApp (Primary Support)</strong><br />
+                  +91 9059970025<br />
+                  <a href="https://wa.me/919059970025?text=Hi%20HAXE%20STUDIO%2C%20I%20am%20interested%20in%20the%20Ethical%20Hacking%20Foundations%20course."
+                     class="contact-link">
+                    💬 Message on WhatsApp
+                  </a>
+                </li>
+                <li>
+                  <strong>Telegram (Course / Group Access)</strong><br />
+                  <!-- TODO: Replace this with your actual Telegram link -->
+                  <span>Telegram link will be shared after enrollment.</span>
+                </li>
+                <li>
+                  <strong>Email</strong><br />
+                  haxeestudio@gmail.com
+                </li>
+                <li>
+                  <strong>Instagram</strong><br />
+                  @haxe.studio
+                </li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h3 style="font-size:0.98rem; margin-bottom:0.5rem;">UPI payment details</h3>
+              <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:0.7rem;">
+                For direct UPI transfer (without using the button), you can send ₹1999 to the UPI ID below and then share
+                the screenshot on WhatsApp:
+              </p>
+              <p style="font-size:0.92rem; margin-bottom:0.5rem;">
+                <strong>UPI ID:</strong> rehamanmohd13@axl
+              </p>
+              <p style="font-size:0.86rem; color:var(--text-muted);">
+                Once payment is confirmed, your course access and support group invitation will be shared with you.
+              </p>
+
+              <a
+                href="upi://pay?pa=rehamanmohd13@axl&pn=HAXE_STUDIO&am=1999&cu=INR&tn=Ethical+Hacking+Professional+Course"
+                class="btn-main"
+                style="margin-top:1rem; width:100%; justify-content:center; text-align:center;"
+              >
+                Pay ₹1999 via UPI
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-inner">
+        <img src="haxestudio.webp" class="footer-logo" alt="HAXE logo" />
+        <div>© <span id="year"></span> HAXE STUDIO. All rights reserved.</div>
+        <div>Instructor – Rehaman Mohd · Ethical Hacking &amp; Cybersecurity Training</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Smooth scroll for nav links
+    document.querySelectorAll("[data-scroll]").forEach(function (el) {
+      el.addEventListener("click", function () {
+        const target = document.querySelector(el.getAttribute("data-scroll"));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: "smooth",
+          });
+        }
+      });
+    });
+
+    // Hero enroll scroll to UPI card
+    document.getElementById("heroEnrollBtn").addEventListener("click", function () {
+      const target = document.getElementById("enroll");
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 70,
+          behavior: "smooth",
+        });
+      }
+    });
+
+    // Current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script>
+function isMobile() {
+  return /Android|iPhone|iPad|iPod|BlackBerry|webOS|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+function upiClickHandler() {
+  if (!isMobile()) {
+    alert("⚠️ UPI payments work only on mobile.\n\nPlease open this site on your phone — or pay manually using UPI ID:\n\n9059970025-6@ybl");
+    return false;
+  }
+  return true;
+}
+
+// Apply to all UPI buttons
+document.querySelectorAll('a[href^="upi://"]').forEach(function(el) {
+  el.addEventListener("click", function(e) {
+    if (!upiClickHandler()) {
+      e.preventDefault();
+    }
+  });
+});
+</script>
+</body>
+</html>
+<audio id="clickSound" src="click.wav"></audio>
+
+<script>
+document.querySelectorAll('button, a').forEach(el => {
+  el.addEventListener('click', () => {
+    document.getElementById('clickSound').play();
+  });
+});
+</script>
