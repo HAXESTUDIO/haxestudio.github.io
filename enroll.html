@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Enroll • HAXE STUDIO</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="top-ribbon"><span>Enroll:</span> Simple UPI-based enrollment — mobile recommended.</div>
+
+    <header class="navbar">
+      <div class="container nav-inner">
+        <div class="nav-left">
+          <img src="assets/images/haxestudio.webp" class="logo-img" alt="HAXE STUDIO Logo">
+          <div>
+            <div class="brand-text-main">HAXE STUDIO</div>
+            <div class="brand-text-sub">Cybersecurity Training & Mentorship</div>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="courses.html" class="nav-link">Courses</a>
+          <a href="certificate.html" class="nav-link">Certification</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <a class="nav-cta" href="courses.html#packs">⚡ Courses</a>
+      </div>
+    </header>
+
+    <main>
+      <section style="padding:40px 0;">
+        <div class="container" style="max-width:760px;">
+          <h1 id="courseTitle">Enroll</h1>
+          <p id="courseDesc" class="section-subtitle">Fill details and click pay to open your UPI app (pre-filled).</p>
+
+          <form id="enrollForm" style="display:grid; gap:10px; margin-top:12px;">
+            <label>Name</label>
+            <input id="name" type="text" required placeholder="Your full name" style="padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); background:transparent; color:var(--text-main);" />
+
+            <label>Email</label>
+            <input id="email" type="email" placeholder="your@example.com" style="padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); background:transparent; color:var(--text-main);" />
+
+            <label>Phone (WhatsApp)</label>
+            <input id="phone" type="tel" placeholder="+91 9xxxxxxxxx" required style="padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); background:transparent; color:var(--text-main);" />
+
+            <div style="display:flex; gap:10px; margin-top:8px;">
+              <button type="button" id="payBtn" class="btn-main">Pay via UPI</button>
+              <button type="button" id="qrBtn" class="btn-ghost">Show UPI QR</button>
+            </div>
+          </form>
+
+          <div id="postPay" style="display:none; margin-top:18px;">
+            <p>After payment, send the screenshot to WhatsApp with your name & email.</p>
+            <a id="waLink" class="btn-main" target="_blank" rel="noopener">Send screenshot on WhatsApp</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <img src="assets/images/haxestudio.webp" class="footer-logo" alt="HAXE logo" />
+        <div>© <span id="year"></span> HAXE STUDIO. All rights reserved.</div>
+      </div>
+    </footer>
+  </div>
+
+  <audio id="clickSound" src="assets/media/click.wav"></audio>
+  <script src="assets/js/enroll.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
